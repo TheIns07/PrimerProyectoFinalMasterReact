@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { GuardarEnStorage } from '../helpers/GuardarEnStorage';
 
 export const Crear = () => {
 
@@ -20,8 +21,13 @@ export const Crear = () => {
         description
       };
       setPelicula(peli)
-      console.log(peli)
+      //Almacenamiento loal
+      GuardarEnStorage('peli', peli)
+      GuardarEnStorage('copia_datos', peli)
+
   }
+
+ 
 
   const {titulo, description} = pelicula;
 
