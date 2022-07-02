@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GuardarEnStorage } from '../helpers/GuardarEnStorage';
 
-export const Crear = () => {
+export const Crear = ({setListadoState}) => {
 
   const titul = "Añadir Pelicula";
   const [pelicula, setPelicula] = useState({
@@ -21,9 +21,13 @@ export const Crear = () => {
         description
       };
       setPelicula(peli)
+      //Actualizar estado
+      setListadoState(elementos => {
+        return[...elementos, peli]
+      })
       //Almacenamiento loal
       GuardarEnStorage('peli', peli)
-      GuardarEnStorage('copia_datos', peli)
+
 
   }
 
@@ -33,7 +37,7 @@ export const Crear = () => {
 
   return (
     <div className="add">
-      <h3 className="title"> {titul}</h3>
+      <h3 className="title"> {titulo}</h3>
       <strong>
         {(titulo && description) && "Has creado la pelicula: "+titulo}
       </strong>
